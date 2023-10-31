@@ -11,12 +11,14 @@ def print_word_freq(file):
     with open(file) as reader:
         text = reader.read()
         words = text.split()
-        print(words)
+        # print(words)
         for word in words:
-            print(word)
+            # print(word)
             word_dict[word] = word_dict.get(word, 0) + 1
-    print(word_dict)
+    # print(word_dict)
 
+    for key, value in word_dict.items():
+        print(key, value)
 
 if __name__ == "__main__":
     import argparse
