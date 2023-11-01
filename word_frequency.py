@@ -13,6 +13,14 @@ def remove_punctuation(str):
             str = str.replace(character, "")
     return str
 
+def remove_stop_words(word_list):
+    no_stop_words = []
+    for word in word_list:
+        if word not in STOP_WORDS:
+            no_stop_words.append(word)
+    return no_stop_words
+
+
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
@@ -21,10 +29,11 @@ def print_word_freq(file):
         text = reader.read()
         cleaned_text = remove_punctuation(text)
         words = cleaned_text.split()
+        no_stop_words = remove_stop_words(words)
+        print(no_stop_words)
         # print(string.punctuation)
-        
-        for word in words:
-            word = word.lower()
+        for word in no_stop_words:
+            word = word.lower()        
             # if word in word_dict:
             #     word_dict[word] = word_dict[word] + 1
             # else:
@@ -34,7 +43,7 @@ def print_word_freq(file):
 
     for key, value in word_count.items():
         print(key, value)
-
+    
 
 if __name__ == "__main__":
     import argparse
