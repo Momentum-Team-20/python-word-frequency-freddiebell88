@@ -1,4 +1,5 @@
 import string
+import pprint
 
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has',
@@ -31,7 +32,7 @@ def print_word_freq(file):
         cleaned_text = remove_punctuation(text)
         words = cleaned_text.split()
         no_stop_words = remove_stop_words(words)
-        print(no_stop_words)
+        # print(no_stop_words)
         # print(string.punctuation)
         for word in no_stop_words:
             word = word.lower()
@@ -41,10 +42,14 @@ def print_word_freq(file):
             #     word_dict[word] = 1
             word_count[word] = word_count.get(word, 0) + 1
     word_count_sorted = sorted(word_count.items(), key=lambda x:x[1])
-    print(f'This is the sorted word count: {word_count_sorted}')
+    # print(f'This is the sorted word count: {word_count_sorted}')
     word_count = dict(word_count_sorted)
     for key, value in word_count.items():
-        print(key, value)
+        # print(key, "|", value)
+        # display = f'{key} | {value}'
+        # print(display.center(10))
+        print(f'{key:15} | {value}')
+        # print(key.center(15), value)
 
 
 if __name__ == "__main__":
