@@ -16,7 +16,9 @@ def remove_punctuation(str):
     return str
 
 
+# function to remove stop words
 def remove_stop_words(word_list):
+    # empty list to put all words that are not stop words in
     no_stop_words = []
     for word in word_list:
         if word not in STOP_WORDS:
@@ -28,28 +30,27 @@ def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
     word_count = {}
     with open(file) as reader:
+        # reading the file and putting that data into the variable called text
         text = reader.read()
+        # removing punctuation from text
         cleaned_text = remove_punctuation(text)
+        # splitting text string into a list
         words = cleaned_text.split()
+        # calling function to remove stop words and
+        # assigning it to the variable name no_stop_words
         no_stop_words = remove_stop_words(words)
-        # print(no_stop_words)
-        # print(string.punctuation)
         for word in no_stop_words:
+            # making each word lowercare
             word = word.lower()
-            # if word in word_dict:
-            #     word_dict[word] = word_dict[word] + 1
-            # else:
-            #     word_dict[word] = 1
+            # get each word in the word count and if it has been seen 
+            # before add 1 to it's count
             word_count[word] = word_count.get(word, 0) + 1
-    word_count_sorted = sorted(word_count.items(), key=lambda x:x[1])
-    # print(f'This is the sorted word count: {word_count_sorted}')
+    # sorting list by word count ascending value
+    word_count_sorted = sorted(word_count.items(), key=lambda x: x[1])
+    # re-establishing word_count as a dictionary
     word_count = dict(word_count_sorted)
     for key, value in word_count.items():
-        # print(key, "|", value)
-        # display = f'{key} | {value}'
-        # print(display.center(10))
-        print(f'{key:15} | {value}')
-        # print(key.center(15), value)
+        print(f'{key:>10} | {value}')
 
 
 if __name__ == "__main__":
