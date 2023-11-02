@@ -42,7 +42,7 @@ def print_word_freq(file):
         for word in no_stop_words:
             # making each word lowercare
             word = word.lower()
-            # get each word in the word count and if it has been seen 
+            # get each word in the word count and if it has been seen
             # before add 1 to it's count
             word_count[word] = word_count.get(word, 0) + 1
     # sorting list by word count ascending value
@@ -50,7 +50,7 @@ def print_word_freq(file):
     # re-establishing word_count as a dictionary
     word_count = dict(word_count_sorted)
     for key, value in word_count.items():
-        print(f'{key:>10} | {value}')
+        print(f'{key:>15} | {value} {value*'*'}')
 
 
 if __name__ == "__main__":
